@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logs-simulator"
+version = "0.1.0"
+description = "Production-like log simulator for parser/normalization pipeline testing"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Logs Simulator" }
+]
+dependencies = [
+  "pydantic>=2.6",
+  "PyYAML>=6.0",
+  "typer>=0.12"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0"
+]
+
+[project.scripts]
+logs-sim = "logs_simulator.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["logs_simulator*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-q"
